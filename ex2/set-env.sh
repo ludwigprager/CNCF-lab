@@ -8,6 +8,6 @@ function kubectl () {
 export -f kubectl
 
 #export NS=cka-1-exercise1
-export NS=ex1
+export NS=ex2
 #export CONTAINER_IMAGE=nginx
 #export CONTAINER_NAME=nginx
