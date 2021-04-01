@@ -17,4 +17,4 @@ Call the script '/home/lprager/work/cka/ckad-exercises/ex1/verify-result.sh' whe
 ```
 
 # Screen Cast
-[![asciicast](ex1/ex1.png)](https://asciinema.org/a/404501)
+[![asciicast](ex1.png)](https://asciinema.org/a/404501)
