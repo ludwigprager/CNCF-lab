@@ -27,3 +27,6 @@ Use namespace ex3.
 These issues might be bugs, they are confusing at the least.  
 - The '--record' option was available for 'kubectl create' in a previous version but seems now gone. In case you want the whole history in the annotations I only found the 'kubectl apply' to be functional.
 - The annotations seem to get overwritten if you use a 'set image' command.
+
+# Screen Cast
+[![asciicast](../ex1/ex1.png)](https://asciinema.org/a/IZoHkloerTBJ048gs3ByHhiSJ)
