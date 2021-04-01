@@ -5,4 +5,4 @@ examples by running the 'start-exercise.sh' scripts in the different subdiretori
 Run the 'verify-result.sh' scripts to check if you passed the test.
 
 # Screen Cast
-[![asciicast](https://asciinema.org/a/404501.svg)](https://asciinema.org/a/404501)
+[![asciicast](ex1/ex1.png)](https://asciinema.org/a/404501)
