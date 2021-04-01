@@ -13,7 +13,7 @@ limits:
 Ensure the pod is running.
 Use namespace ex1.
 
-Call the script '/home/lprager/work/cka/ckad-exercises/ex1/verify-result.sh' when done
+Call the script 'verify-result.sh' when done
 ```
 
 # Screen Cast
