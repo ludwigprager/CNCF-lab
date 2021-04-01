@@ -1,4 +1,4 @@
-# Exercise 1
+# Exercise 2
 
 ```
 Create a pod with name nginx and image 'nginx' with the following environment variables:

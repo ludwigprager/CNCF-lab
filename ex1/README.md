@@ -1,6 +1,6 @@
 # Exercise 1
 
-You need [microk8s](https://microk8s.io/) installed to run the exercises in this repo.  
+You need [microk8s](https://microk8s.io/) installed to run the exercises in this repo.
 
 ```
 Create a pod with name nginx and image 'nginx' with the following attributes:
