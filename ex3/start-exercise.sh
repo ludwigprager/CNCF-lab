@@ -3,9 +3,7 @@
 set -eu
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cd $DIR
-
-source set-env.sh
+source $DIR/set-env.sh
 
 echo "Preparing the environment ..."
 

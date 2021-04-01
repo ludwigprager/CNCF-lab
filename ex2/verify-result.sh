@@ -2,7 +2,8 @@
 
 set -u
 
-source set-env.sh
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source $DIR/set-env.sh
 
 error=false
 message=

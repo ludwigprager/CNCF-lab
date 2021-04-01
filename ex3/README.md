@@ -23,9 +23,6 @@ Roll back to the second version, i.e. when 'nginx:1.14' was running.
 Use namespace ex3.
 ```
 
-# Screen Cast
-[![asciicast](ex1.png)](https://asciinema.org/a/404501)
-
 # Some Remarks to this exercise.
 These issues might be bugs, they are confusing at the least.  
 - The '--record' option was available for 'kubectl create' in a previous version but seems now gone. In case you want the whole history in the annotations I only found the 'kubectl apply' to be functional.
