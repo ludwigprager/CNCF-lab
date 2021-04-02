@@ -21,18 +21,11 @@ Call the script '$DIR/verify-result.sh' when done
 
 # Some Remarks to this exercise.
 - I found no proper example in the kubernetes docs that you can copy&paste for the rolling update scenario.
-- Instead of
+- The 'type: RollingUpdate' can be omitted since it is the default. The complete strategy specification is
 ```
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 2
-```
-you can omit the 'type' specification and simply use
-```
-  strategy:
-    type: RollingUpdate
       maxSurge: 1
       maxUnavailable: 2
 ```

@@ -64,7 +64,6 @@ k create deployment nginx-deploy --image=nginx:1.13 --replicas=4 -o yaml --dry-r
 2. modify the strategy:
 
   strategy:
-    type: RollingUpdate
     rollingUpdate:
       maxSurge: 1
       maxUnavailable: 2
