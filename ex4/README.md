@@ -21,7 +21,7 @@ Call the script '$DIR/verify-result.sh' when done
 
 # Some Remarks to this exercise.
 - I found no proper example in the kubernetes docs that you can copy&paste for the rolling update scenario.
-- The 'type: RollingUpdate' can be omitted since it is the default. The complete strategy specification is
+- The 'type: RollingUpdate' tag is omitted in the 'proposed solution' since it is the default. The complete strategy specification is
 ```
   strategy:
     type: RollingUpdate
