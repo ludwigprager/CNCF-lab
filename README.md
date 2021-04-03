@@ -2,7 +2,7 @@
 
 ## TL;DR
 ```
-snap install microk8s
+sudo snap install microk8s --classic
 git clone https://github.com/ludwigprager/ckad-exercises.git
 ./ckad-exercises/ex1/start-exercise.sh 
 ```
