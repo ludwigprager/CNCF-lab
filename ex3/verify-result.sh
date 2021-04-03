@@ -64,19 +64,19 @@ $message
 suggested solution:
 
 1. create a yaml file:
-kubectl create deployment nginx-deploy --image=nginx:1.13 -o yaml --dry-run=client > nginx-deploy.yaml
+kubectl -n$NS create deployment nginx-deploy --image=nginx:1.13 -o yaml --dry-run=client > nginx-deploy.yaml
 
 2. apply the yaml file:
-kubectl apply -f nginx-deploy.yaml  --record
+kubectl -n$NS apply -f nginx-deploy.yaml  --record
 
 3. upgrade the deployment several times:
-kubectl set image deploy nginx-deploy nginx=nginx:1.14 --record
-kubectl set image deploy nginx-deploy nginx=nginx:1.15 --record
-kubectl set image deploy nginx-deploy nginx=nginx:1.16 --record
-kubectl set image deploy nginx-deploy nginx=nginx:1.17 --record
+kubectl -n$NS set image deploy nginx-deploy nginx=nginx:1.14 --record
+kubectl -n$NS set image deploy nginx-deploy nginx=nginx:1.15 --record
+kubectl -n$NS set image deploy nginx-deploy nginx=nginx:1.16 --record
+kubectl -n$NS set image deploy nginx-deploy nginx=nginx:1.17 --record
 
 4. rollback:
-kubectl rollout undo deployment nginx-deploy  --to-revision=2
+kubectl -n$NS rollout undo deployment nginx-deploy  --to-revision=2
 EOS
 
 
