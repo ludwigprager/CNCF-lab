@@ -1,5 +1,12 @@
 # CKAD hands-on exercises
 
+## TL;DR
+```
+snap install microk8s
+git clone https://github.com/ludwigprager/ckad-exercises.git
+./ckad-exercises/ex1/start-exercise.sh 
+```
+
 If you have [microk8s](https://microk8s.io/) on your computer you can try these CKAD
 exercises by running the 'start-exercise.sh' scripts in the different subdiretories.  
 
