@@ -14,4 +14,4 @@ Run the 'verify-result.sh' scripts to check if you passed the test.
 It will show you the solution in case you failed to solve the exercise.
 
 # Screen Cast
-[![asciicast](ex1/ex1.png)](https://asciinema.org/a/404888)
+[![asciicast](ex1/ex1.png)](https://asciinema.org/a/404891)
