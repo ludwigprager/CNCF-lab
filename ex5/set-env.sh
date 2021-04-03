@@ -9,5 +9,5 @@ export -f kubectl
 export NS=ex5
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-export HOSTPATH=${DIR}/wiki/
+export HOSTPATH=${DIR}/redis/
 
