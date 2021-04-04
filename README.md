@@ -3,6 +3,7 @@
 ## TL;DR
 ```
 sudo snap install microk8s --classic
+sudo microk8s.enable dns
 git clone https://github.com/ludwigprager/ckad-exercises.git
 ./ckad-exercises/ex1/start-exercise.sh 
 ```
