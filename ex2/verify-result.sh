@@ -9,7 +9,7 @@ error=false
 message=
 
 # test container image
-image=$(kubectl get pod -n$NS nginx -o jsonpath="{$.spec.containers[?(.name=='nginx')].image}")
+image=$(kubectl get pod -n$NS nginx -o jsonpath="{$.spec.containers[?(.name=='nginx')].image}" 2>/dev/null)
 if [[ $image != nginx ]]; then
   error=true
   echo "the container image is wrong"
@@ -17,7 +17,7 @@ fi
 
 
 # test container status
-status=$(kubectl -n$NS get pod nginx -o=jsonpath="{$.status.containerStatuses[?(.name=='nginx')].state.running}")
+status=$(kubectl -n$NS get pod nginx -o=jsonpath="{$.status.containerStatuses[?(.name=='nginx')].state.running}" 2>/dev/null)
 #echo container status: $status
 if [[ -z "$status" ]]; then
   error=true
@@ -26,7 +26,7 @@ fi
 
 
 # test pod status
-status=$(kubectl -n$NS get pod nginx -o=jsonpath="{$.status.phase}")
+status=$(kubectl -n$NS get pod nginx -o=jsonpath="{$.status.phase}" 2>/dev/null)
 if [[ "$status" != "Running" ]] ; then
   error=true
   echo "the pod is not running"
@@ -35,7 +35,7 @@ fi
 set +u
 
 # test environment variables
-string=$(kubectl exec -nex2 -ti  nginx -- env)
+string=$(kubectl -n$NS exec -ti  nginx -- env 2>/dev/null)
 if [[ $string != *"UNCHANGED_REFERENCE=https://172.17.0.1:80"* ]]; then
   error=true
   echo "environment variable 'UNCHANGED_REFERENCE' not found or wrong"
@@ -53,21 +53,6 @@ if [[ $string != *"ESCAPED_REFERENCE=https://172.17.0.1:80"* ]]; then
 fi
 
 
-#f [[ "$string" != "https://172.17.0.1:80" ]] ; then
-# error=true
-# echo "environment variable 'UNCHANGED_REFERENCE' not found or wrong"
-# echo found: $string
-#i
-
-
-#SERVICE_ADDRESS=https://172.17.0.1:80
-#ESCAPED_REFERENCE=https://172.17.0.1:80
-
-
-#alias k='kubectl'
-#source $(k completion bash | 's/kubectl/k/g')
-#do="-o yaml --dry-run=client"
-
 if [ "$error" = true ] ; then
 
 cat << EOS
@@ -84,12 +69,12 @@ ESCAPED_REFERENCE=https://172.17.0.1:80
 EOF
 
 2. create a config map:
-k create cm -n$NS --from-env-file=a.env
+kubectl -n$NS create cm cm1 --from-env-file=a.env
 
 3. create a yaml file for the pod:
 
 do="-o yaml --dry-run=client"
-kubectl run -n$NS nginx --image=nginx \$do > pod.yaml
+kubectl -n$NS run nginx --image=nginx \$do > pod.yaml
 
 4. edit pod.yaml, use the 'envFrom' tag.
 
@@ -99,7 +84,7 @@ kubectl run -n$NS nginx --image=nginx \$do > pod.yaml
 
 
 5. create the pod:
-kubectl create -f pod.yaml
+kubectl -n$NS create -f pod.yaml
 
 EOS
 

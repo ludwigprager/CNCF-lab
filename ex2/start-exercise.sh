@@ -22,8 +22,9 @@ UNCHANGED_REFERENCE https://172.17.0.1:80
 SERVICE_ADDRESS     https://172.17.0.1:80
 ESCAPED_REFERENCE   https://172.17.0.1:80
 
-Ensure the pod is running.
-Use namespace ${NS}.
+- Create an env-file
+- Ensure the pod is running.
+- Use namespace ${NS}.
 
 Call the script '$DIR/verify-result.sh' when done
 
