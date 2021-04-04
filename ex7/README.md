@@ -1,4 +1,4 @@
-# Exercise 6
+# Exercise 7
 
 You need [microk8s](https://microk8s.io/) installed to run the exercises in this repo.
 
