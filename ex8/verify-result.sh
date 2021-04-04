@@ -53,11 +53,16 @@ spec:
   podSelector:
     matchLabels:
       app: nginx
+  policyTypes:
+  - Ingress
   ingress:
   - from:
     - podSelector:
         matchLabels:
           access: granted
+    ports:
+    - protocol: TCP
+      port: 80
 EOS
 
 
