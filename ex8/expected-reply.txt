@@ -1,5 +1,3 @@
-Connecting to nginx:80 (10.152.183.210:80)
-writing to stdout
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +23,3 @@ Commercial support is available at
 <p><em>Thank you for using nginx.</em></p>
 </body>
 </html>
--                    100% |********************************|   612  0:00:00 ETA
-written to stdout
-pod "busybox" deleted

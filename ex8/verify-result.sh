@@ -16,14 +16,15 @@ expected_reply=$(<expected-reply.txt)
 
 # test pod with    label -> should be allowed
 reply=$( kubectl -n$NS run busybox --image=busybox --rm -it --restart=Never --labels=access=granted -- wget -O- http://nginx:80 --timeout 2 )
-if [[  "$reply" != "$expected_reply" ]]; then
+if [[  "$expected_reply" =~ *"$reply"* ]]; then
   error=true
   echo "the netpol blocks a pod that should be allowed"
+echo reply: $reply
 fi
 
 # test pod without label -> should be blocked
 reply=$( kubectl -n$NS run busybox --image=busybox --rm -it --restart=Never -- wget -O- http://nginx:80 --timeout 2 2>/dev/null)
-if [[  "$reply" == "$expected_reply" ]]; then
+if [[  "$expected_reply" =~ *"$reply"* ]]; then
   error=true
   echo "the netpol allows a pod that should be blocked"
 fi
