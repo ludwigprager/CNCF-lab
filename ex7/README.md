@@ -3,25 +3,27 @@
 You need [microk8s](https://microk8s.io/) installed to run the exercises in this repo.
 
 ```
-Create a pod that mounts the directory 'some_existing_directory' from the host where it is
-running onto the directory '/var/log/ex6' inside the container using a PVC.
+Several pods are running in namespace 'ckad-ex7'.
 
 1.
-Create a Persistent Volume called 'pv-ex6' with the attributes
-- storage class 'manual'
-- access mode RWX
-- size 2Gi
+change the annotation 'owner' of pod 'ui' to 'peter'
 
 2.
-Create a PVC called 'pvc-ex6' requesting 100Mi. It shall bind to the PV 'pv-ex6..
+change the label 'env' of pod 'ui' to 'test'
 
 3.
-Create the pod using
-- pod name 'pod-ex6'
-- container image: 'nginx:alpine'
-- volume name: 'v1'
+remove the label 'tirr' from pod db
 
+4.
+delete all pods that match the label 'podname = dummy'
 
-Use namespace 'ex6'.
+5.
+delete all pods that have a label 'apodname'
+
+6.
+create a pod 'ex7' with labels
+- tier : front
+- env : prod
+
+Use namespace 'ckad-ex7'.
 ```
-Note: when performing the exercise by calling 'start-exercise.sh' you will be given a real name insted of 'some_existing_directory'

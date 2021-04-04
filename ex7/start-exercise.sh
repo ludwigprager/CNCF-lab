@@ -58,7 +58,7 @@ create a pod 'ex7' with labels
 - tier : front
 - env : prod
 
-Use namespace ${NS}.
+Use namespace '${NS}'.
 
 Call the script '$DIR/verify-result.sh' when done
 
