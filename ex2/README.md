@@ -10,8 +10,6 @@ ESCAPED_REFERENCE   https://172.17.0.1:80
 Ensure the pod is running.
 Use namespace ex2.
 
-Call the script '/home/lprager/work/cka/ckad-exercises/ex2/verify-result.sh' when done
-
 Call the script 'verify-result.sh' when done
 ```
 
