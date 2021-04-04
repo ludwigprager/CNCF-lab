@@ -11,7 +11,7 @@ message=
 
 
 # test container status
-status=$(kubectl -n$NS get pod pod-ex6 -o=jsonpath="{$.status.containerStatuses[?(.name=='pod-ex6')].state.running}" 2>/dev/null )
+status=$(kubectl -n$NS get pod $PODNAME -o=jsonpath="{$.status.containerStatuses[?(.name=='nginx')].state.running}" 2>/dev/null )
 #echo container status: $status
 if [[ -z "$status" ]]; then
   error=true
@@ -20,14 +20,14 @@ fi
 
 
 # test pod status
-status=$(kubectl -n$NS get pod pod-ex6 -o=jsonpath="{$.status.phase}" 2>/dev/null )
+status=$(kubectl -n$NS get pod $PODNAME -o=jsonpath="{$.status.phase}" 2>/dev/null )
 if [[ "$status" != "Running" ]] ; then
   error=true
   echo "the pod is not running"
 fi
 
 # test volume
-#hostpath=$(kubectl -n$NS get pod pod-ex6 -o=jsonpath="{$.spec.volumes[?(@.name=='v1')].hostPath.path}" 2>/dev/null )
+#hostpath=$(kubectl -n$NS get pod $PODNAME -o=jsonpath="{$.spec.volumes[?(@.name=='v1')].hostPath.path}" 2>/dev/null )
 hostpath=$(kubectl -n$NS get pv pv-ex6 -o jsonpath="{$.spec.hostPath.path}" 2>/dev/null )
 
 if [[ "$hostpath" != "$HOSTPATH" ]]; then
@@ -53,6 +53,7 @@ kind: PersistentVolume
 metadata:
   name: pv-ex6
 spec:
+  storageClassName: manual
   accessModes:
     - ReadWriteMany
   capacity:
@@ -65,6 +66,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: pvc-ex6
 spec:
+  storageClassName: manual
   accessModes:
     - ReadWriteMany
   resources:
@@ -75,11 +77,11 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-  name: redis
+  name: $PODNAME
 spec:
   containers:
-  - image: redis
-    name: redis
+  - image: nginx:alpine
+    name: nginx
     volumeMounts:
       - mountPath: /var/log/ex6
         name: v1

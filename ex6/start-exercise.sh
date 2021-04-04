@@ -9,6 +9,7 @@ echo "Preparing the environment ..."
 
 # setup
 
+kubectl delete ns $NS  pod $PODNAME > /dev/null 2>&1 > /dev/null || true
 kubectl delete         pv pv-ex6 > /dev/null 2>&1 > /dev/null || true
 kubectl delete ns $NS  pvc pvc-ex6 > /dev/null 2>&1 > /dev/null || true
 kubectl delete ns $NS > /dev/null 2>&1 > /dev/null || true
@@ -31,12 +32,12 @@ Create a PVC called 'pvc-ex6' requesting 100Mi. It shall bind to the PV 'pv-ex6.
 
 3.
 Create the pod using
-- pod name 'pod-ex6'
+- pod name '$PODNAME'
 - container image: 'nginx:alpine'
 - volume name: 'v1'
 
 
-Use namespace ${NS}.
+Use namespace '${NS}'.
 
 Call the script '$DIR/verify-result.sh' when done
 

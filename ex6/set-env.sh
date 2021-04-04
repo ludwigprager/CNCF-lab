@@ -10,4 +10,5 @@ export NS=ex6
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 export HOSTPATH=${DIR}/redis-ex6/
+export PODNAME="pod-ex6"
 
