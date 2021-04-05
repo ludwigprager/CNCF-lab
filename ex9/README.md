@@ -10,6 +10,4 @@ Create a pod named 'probe' and image 'ludwigprager/k8s-random:1' that
 - watch the container getting 'ready'
 
 Use namespace 'ckad-ex9'.
-
-Call the script '/home/lprager/work/git/github/ludwigprager/ckad-exercises/ex9/verify-result.sh' when done
 ```
