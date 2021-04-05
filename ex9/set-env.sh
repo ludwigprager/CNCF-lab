@@ -9,4 +9,4 @@ export -f kubectl
 
 export NS=ckad-ex9
 export PORT=8765
-export IMAGE=ludwigprager/k8s-random
+export IMAGE=ludwigprager/k8s-random:1
