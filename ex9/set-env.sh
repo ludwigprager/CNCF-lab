@@ -6,7 +6,7 @@ function kubectl () {
 }
 
 export -f kubectl
+
 export NS=ckad-ex9
-
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
+export PORT=8765
+export IMAGE=ludwigprager/k8s-random
