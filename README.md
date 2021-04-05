@@ -24,6 +24,8 @@ git clone https://github.com/ludwigprager/ckad-exercises.git
 ## Services and Networking (13%)
 [Exercise 8: ClusterIP and network policy](./ex8/)  
 
+---
+
 If you have [microk8s](https://microk8s.io/) on your computer you can try these CKAD
 exercises by running the 'start-exercise.sh' scripts in the different subdiretories.  
 
