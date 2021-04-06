@@ -22,7 +22,7 @@ UNCHANGED_REFERENCE https://172.17.0.1:80
 SERVICE_ADDRESS     https://172.17.0.1:80
 ESCAPED_REFERENCE   https://172.17.0.1:80
 
-- Create an env-file
+- Create an env-file named cm1
 - Ensure the pod is running.
 - Use namespace ${NS}.
 
