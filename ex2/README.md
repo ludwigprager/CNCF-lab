@@ -14,5 +14,5 @@ Call the script 'verify-result.sh' when done
 ```
 
 # Screen Cast
-[![asciicast](../ex1/ex1.png)](https://asciinema.org/a/DYN3BUWMUtcPOO15snG1utWYx)
+[![asciicast](../ex01/ex01.png)](https://asciinema.org/a/DYN3BUWMUtcPOO15snG1utWYx)
 

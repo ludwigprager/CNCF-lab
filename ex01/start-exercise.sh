@@ -26,7 +26,7 @@ limits:
   memory: 512Mi
 
 Ensure the pod is running.
-Use namespace ${NS}.
+Use namespace '${NS}'.
 
 Call the script '$DIR/verify-result.sh' when done
 

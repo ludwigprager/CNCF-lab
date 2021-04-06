@@ -5,12 +5,12 @@
 sudo snap install microk8s --classic
 sudo microk8s.enable dns
 git clone https://github.com/ludwigprager/ckad-exercises.git
-./ckad-exercises/ex1/start-exercise.sh 
+./ckad-exercises/ex01/start-exercise.sh 
 ```
 
 ## Multi-Container Pods (10%)
 ## Pod Design (20%)
-[Exercise  1: requests and limits](./ex1/)  
+[Exercise  1: requests and limits](./ex01/)  
 [Exercise  2: environment variables](./ex2/)  
 [Exercise  7: labels and annotations](./ex7/)  
 [Exercise 10: cron jobs](./ex10/)  
@@ -34,4 +34,4 @@ Run the 'verify-result.sh' scripts to check if you passed the test.
 It will show you the solution in case you failed to solve the exercise.
 
 # Screen Cast
-[![asciicast](ex1/ex1.png)](https://asciinema.org/a/404891)
+[![asciicast](ex01/ex01.png)](https://asciinema.org/a/404891)
