@@ -52,6 +52,13 @@ if [[ $string != *"ESCAPED_REFERENCE=https://172.17.0.1:80"* ]]; then
 #echo found: $string
 fi
 
+# test if configmap has been created
+string=$(kubectl -n$NS get cm)
+if [[ $string != *cm1* ]]; then
+	error=true
+	echo "configmap cm1 not found"
+fi
+
 
 if [ "$error" = true ] ; then
 
@@ -68,7 +75,7 @@ SERVICE_ADDRESS=https://172.17.0.1:80
 ESCAPED_REFERENCE=https://172.17.0.1:80
 EOF
 
-2. create a config map:
+2. create a config map named cm1:
 kubectl -n$NS create cm cm1 --from-env-file=a.env
 
 3. create a yaml file for the pod:
