@@ -38,6 +38,7 @@ description=$(kubectl  -n$NS describe deployment nginx-deploy 2>/dev/null)
 # 1. strategy type
 echo "$description" | grep -qx 'StrategyType:.*RollingUpdate$'
 if [ $? -ne 0 ]; then
+    error=true
     echo 'StrategyType: Rollingupdate' not found
 fi
 
@@ -45,6 +46,7 @@ fi
 # 2. surge + unavailable
 echo "$description" | grep -qx 'RollingUpdateStrategy:.*2 max unavailable, 1 max surge$'
 if [ $? -ne 0 ]; then
+    error=true
     echo 'max surge' or 'max unavailable' not correct
 fi
 
