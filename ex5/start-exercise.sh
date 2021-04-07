@@ -14,7 +14,7 @@ kubectl create ns $NS > /dev/null
 
 cat << EOF
 
-Create a pod 'nginx' that mounts the directory '${HOSTPATH}' from the host where
+Create a pod 'redis' that mounts the directory '${HOSTPATH}' from the host where
 it is running onto the directory '/redis' inside the container.
 
 Use
