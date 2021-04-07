@@ -54,7 +54,7 @@ fi
 
 # test if configmap has been created
 string=$(kubectl -n$NS get cm)
-if [[ $string != *cm1* ]]; then
+if [[ $string != *"cm1"* ]]; then
 	error=true
 	echo "configmap cm1 not found"
 fi
