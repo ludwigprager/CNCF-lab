@@ -6,6 +6,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
 
 source set-env.sh
+source ../functions.sh
 
 echo "Preparing the environment ..."
 
@@ -31,4 +32,7 @@ Use namespace '${NS}'.
 Call the script '$DIR/verify-result.sh' when done
 
 EOF
+
+take-down-time
+#echo $(date +%s) > $DIR/start.time
 

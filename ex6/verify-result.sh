@@ -4,6 +4,7 @@ set -u
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $DIR/set-env.sh
+source $DIR/../functions.sh
 
 error=false
 message=
@@ -11,7 +12,8 @@ message=
 
 
 # test container status
-status=$(kubectl -n$NS get pod $PODNAME -o=jsonpath="{$.status.containerStatuses[?(.name=='nginx')].state.running}" 2>/dev/null )
+#status=$(kubectl -n$NS get pod $PODNAME -o=jsonpath="{$.status.containerStatuses[?(.image=='nginx:')].state.running}" 2>/dev/null )
+status=$(kubectl -n$NS get pod $PODNAME -o=jsonpath="{$.status.containerStatuses[0].state.running}" 2>/dev/null )
 #echo container status: $status
 if [[ -z "$status" ]]; then
   error=true
@@ -94,6 +96,7 @@ EOS
 
 
 else
-    echo PASSED
+  echo PASSED
+  print-elapsed-time $DIR
 fi
 

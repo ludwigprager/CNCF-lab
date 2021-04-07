@@ -4,6 +4,7 @@ set -u
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $DIR/set-env.sh
+source $DIR/../functions.sh
 
 error=false
 message=
@@ -38,14 +39,16 @@ description=$(kubectl  -n$NS describe deployment nginx-deploy 2>/dev/null)
 # 1. strategy type
 echo "$description" | grep -qx 'StrategyType:.*RollingUpdate$'
 if [ $? -ne 0 ]; then
-    echo 'StrategyType: Rollingupdate' not found
+  error=true
+  echo 'StrategyType: Rollingupdate' not found
 fi
 
 
 # 2. surge + unavailable
 echo "$description" | grep -qx 'RollingUpdateStrategy:.*2 max unavailable, 1 max surge$'
 if [ $? -ne 0 ]; then
-    echo 'max surge' or 'max unavailable' not correct
+  error=true
+  echo 'max surge' or 'max unavailable' not correct
 fi
 
 set +u
@@ -80,5 +83,6 @@ EOS
 
 
 else
-    echo PASSED
+  echo PASSED
+  print-elapsed-time $DIR
 fi

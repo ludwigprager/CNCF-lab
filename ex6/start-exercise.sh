@@ -4,6 +4,7 @@ set -eu
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $DIR/set-env.sh
+source $DIR/../functions.sh
 
 echo "Preparing the environment ..."
 
@@ -32,6 +33,7 @@ Create a PVC called 'pvc-ex6' requesting 100Mi. It shall bind to the PV 'pv-ex6.
 
 3.
 Create the pod using
+- a single container
 - pod name '$PODNAME'
 - container image: 'nginx:alpine'
 - volume name: 'v1'
@@ -43,3 +45,4 @@ Call the script '$DIR/verify-result.sh' when done
 
 EOF
 
+take-down-time $DIR

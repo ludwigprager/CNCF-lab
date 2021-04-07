@@ -3,9 +3,11 @@
 You need [microk8s](https://microk8s.io/) installed to run the exercises in this repo.
 
 ```
+Preparing the environment ...
+
 1.
-Create a new deployment 'nginx-deploy' with image nginx:1.13 and 4 replicas.
-The deployment shall use a 'rolling update' strategy with maxSurge=2, and maxUnavailable=1.
+Create a new deployment 'nginx-deploy' with image 'nginx:1.13' and 4 replicas.
+The deployment shall use a 'rolling update' strategy with at least 3 and no more than 6 pods ready during the update.
 
 2.
 Then, upgrade the deployment to version 1.14
@@ -14,9 +16,6 @@ Then, upgrade the deployment to version 1.14
 Roll back 
 
 Use namespace ex4.
-
-Call the script '$DIR/verify-result.sh' when done
-
 ```
 
 # Some Remarks to this exercise.

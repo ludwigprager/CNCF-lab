@@ -4,6 +4,7 @@ set -u
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $DIR/set-env.sh
+source $DIR/../functions.sh
 
 error=false
 message=
@@ -67,5 +68,6 @@ EOS
 
 
 else
-    echo PASSED
+  echo PASSED
+  print-elapsed-time $DIR
 fi

@@ -14,20 +14,18 @@ kubectl create ns $NS > /dev/null
 
 cat << EOF
 
-Create a cronjob called 'rand' that starts a job which quickly returns with either a success or an error.
-
-- Use the image '$IMAGE'.
-
-- Start the cronjob every $INTERVAL minutes.
+Create a cronjob called 'rand' that runs single-container pods with image '$IMAGE'.
 
 - Set the environment variables
   - MODE=$MODE
   - FAILURE_RATE=$FAILURE_RATE
-  which will make the job fail in ${FAILURE_RATE}% of all incarnations.
+  which will make the job fail in ${FAILURE_RATE}% of all incarnations or run to completion otherwise.
+
+- Start the cronjob every $INTERVAL minutes.
 
 - The cronjob shall run no more than $PARALLELISM job instances at a time.
 
-- Once a job succeds no more jobs shall be started.
+- Once a job succeeds no more jobs shall be started.
 
 - When no job ran to success after $BACKOFFLIMIT tries the cronjob run shall be marked as failed, too.
 

@@ -4,6 +4,7 @@ set -u
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $DIR/set-env.sh
+source $DIR/../functions.sh
 
 error=false
 message=
@@ -63,5 +64,15 @@ kubectl run -n$NS nginx --image=nginx --requests='cpu=100m,memory=256Mi' --limit
 EOF
 
 else
+#  source 
+#    start=$(<start.time)
+#    now=$(date +%s)
+#    elapsed=$( echo "$now - $start" | bc -l )
+#    minutes=$(( elapsed/60 ))
+#    seconds=$(( elapsed - (minutes * 60) ))
     echo PASSED
+#    printf "Time taken: $minutes minutes, $seconds seconds\n"
+
+  print-elapsed-time $DIR
 fi
+

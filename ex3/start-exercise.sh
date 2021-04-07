@@ -4,6 +4,7 @@ set -eu
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $DIR/set-env.sh
+source $DIR/../functions.sh
 
 echo "Preparing the environment ..."
 
@@ -15,7 +16,7 @@ kubectl create ns $NS > /dev/null
 cat << EOF
 
 1.
-Create a new deployment called nginx-deploy, with image nginx:1.13 and 1 replica.
+Create a new deployment called 'nginx-deploy', with image 'nginx:1.13' and 1 replica.
 Record the command in the resource annotation. 
 Hint: you need to use 'kubectl apply' since 'kubectl create' does not have the '--record' option anymore.
 
@@ -37,3 +38,4 @@ Call the script '$DIR/verify-result.sh' when done
 
 EOF
 
+take-down-time $DIR

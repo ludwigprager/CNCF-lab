@@ -3,7 +3,7 @@
 You need [microk8s](https://microk8s.io/) installed to run the exercises in this repo.
 
 ```
-Create a pod 'nginx' that mounts the directory '<some_existing_directory>/redis/' from the host where
+Create a pod 'redis' that mounts the directory '<some_existing_directory>/redis/' from the host where
 it is running onto the directory '/redis' inside the container.
 
 Use
