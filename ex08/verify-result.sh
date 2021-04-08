@@ -39,7 +39,7 @@ kubectl -n$NS create deployment nginx --image=nginx:1.16 --replicas=2
 kubectl -n$NS expose deployment nginx --port=80 --name=$SERVICE
 
 
-cat << EOS | kubectl -n$NS create -f -
+cat << EOF | kubectl -n$NS create -f -
 kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
 metadata:
@@ -58,6 +58,7 @@ spec:
     ports:
     - protocol: TCP
       port: 80
+EOF
 EOS
 
 
