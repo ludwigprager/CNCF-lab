@@ -4,6 +4,7 @@ set -u
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $DIR/set-env.sh
+source $DIR/../functions.sh
 
 error=false
 message=
@@ -27,7 +28,7 @@ fi
 backofflimit=$(kubectl get cronjob -n$NS rand -o jsonpath="{$.spec.jobTemplate.spec.backoffLimit}" 2>/dev/null)
 if [[ $backofflimit != $BACKOFFLIMIT ]]; then
   error=true
-  echo "backoffLimit is missing or wrong"
+  printf "backoffLimit is missing or wrong. Expected: %d, found: %d \n" "$BACKOFFLIMIT" "$backofflimit"
 fi
 
 # test activeDeadlineSeconds
@@ -123,7 +124,8 @@ EOF
 EOS
 
 else
-    echo PASSED
+  echo PASSED
+  print-elapsed-time $DIR
 fi
 
 
