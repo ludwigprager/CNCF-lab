@@ -4,44 +4,26 @@ set -u
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $DIR/set-env.sh
+source $DIR/../functions.sh
 
 error=false
 
-: '
-expected=$(<expected-reply.txt)
 
-# test pod with label -> should be allowed
-reply=$( kubectl -n$NS run busybox --image=busybox --rm -it --restart=Never --labels=access=granted -- "wget -O- -T 2 http://$SERVICE:80" )
-echo "$reply" > reply
-
-#if [[  "$expected" != *"$reply"* ]]; then
-if grep -q "$expected" <<< "$reply"; then
+kubectl -n$NS run busybox --image=busybox --rm -it --restart=Never --labels=access=granted -- "nc -v -w2 -z ${SERVICE} 80" >/dev/null 2>&1
+if [ $? -eq 1 ]
+then
   error=true
-  echo "the netpol blocks a pod that should be allowed"
-  echo reply: "$reply"
-#  echo
-#  echo
-#  echo expected: "$expected"
-#  echo
-#  echo
+  echo "pods are blocked that should be allowed"
+fi
+
+kubectl -n$NS run busybox --image=busybox --rm -it --restart=Never                         -- "nc -v -w2 -z ${SERVICE} 80" >/dev/null 2>&1
+if [ $? -eq 0 ]
+then
+  error=true
+  echo "pods are allowed that should be blocked"
 fi
 
 
-printf "error: %s" $error
-exit
-
-# test pod without label -> should be blocked
-reply=$( kubectl -n$NS run busybox --image=busybox --rm -it --restart=Never                         -- "wget -O- -T 2 http://$SERVICE:80" )
-if [[  "$expected" == *"$reply"* ]]; then
-  error=true
-  echo "the netpol allows a pod that should be blocked"
-fi
-'
-
-error=true
-echo
-echo
-echo sorry: test is not working == not yet available
 
 set +u
 
@@ -80,6 +62,7 @@ EOS
 
 
 else
-    echo PASSED
+  echo PASSED
+  print-elapsed-time $DIR
 fi
 

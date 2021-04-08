@@ -4,6 +4,7 @@ set -eu
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $DIR/set-env.sh
+source $DIR/../functions.sh
 
 echo "Preparing the environment ..."
 
@@ -20,7 +21,7 @@ kubectl create -n$NS -f deny-all-ingress.yaml
 
 cat << EOF
 
-Create a deployment with image 'nginx:1.16' of 2 replicas, expose it via a ClusterIP service on
+Create a deployment 'nginx' with image 'nginx:1.16' of 2 replicas, expose it via a ClusterIP service on
 port 80. Use service name '$SERVICE'.
 Create a NetworkPolicy so that only pods with labels 'access: granted' can
 access the deployment and apply it
@@ -31,3 +32,4 @@ Call the script '$DIR/verify-result.sh' when done
 
 EOF
 
+take-down-time $DIR
