@@ -25,7 +25,7 @@ git clone https://github.com/ludwigprager/ckad-exercises.git
 ## Observability (18%)
 [Exercise 09: readiness and liveliness](./ex09/)  
 ## Services and Networking (13%)
-[Exercise 08: ClusterIP and network policy](./ex8/)  
+[Exercise 08: ClusterIP and network policy](./ex08/)  
 
 ---
 
