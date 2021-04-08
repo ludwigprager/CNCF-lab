@@ -1,5 +1,7 @@
 # CKAD hands-on exercises
 
+These exercises use kubectl version 1.20
+
 ## TL;DR
 ```
 sudo snap install microk8s --classic
@@ -21,7 +23,7 @@ git clone https://github.com/ludwigprager/ckad-exercises.git
 [Exercise 03: rollout, rollback, record](./ex3/)  
 [Exercise 04: rollout](./ex4/)  
 ## Observability (18%)
-[Exercise 09: readiness and liveliness](./ex9/)  
+[Exercise 09: readiness and liveliness](./ex09/)  
 ## Services and Networking (13%)
 [Exercise 08: ClusterIP and network policy](./ex8/)  
 
