@@ -1,0 +1,149 @@
+./kubectl  node-shell kind-worker
+
+https://github.com/kubernetes-sigs/kind/releases
+
+
+---
+
+- create pod on worker1
+- create Pod-bind-definition.yaml to relocate pod to worker2
+
+---
+
+label node worker1 with 'size=Large'
+run a pod with node selector 'size=Large'
+
+run another pod to be schedules NOT on a node with 'size=Large' (-> affinity)
+
+---
+
+- label three workers with 'col=blue' 'col=red' 'col=green'
+- create three pods that will be scheduled on exactly one of the workers
+- prevent other pods from being scheduled on the three workers
+
+(solution: combination of tains/toleration and affinity)
+
+---
+
+kc35: warum hilft weitere netpol?
+
+
+
+---
+
+# Pass the CKA exam with these 100 practice questions
+## noch einbauen:
+'014. Create a multipod with two containers and add a command'
+'017. Create a secret and mount it to the pod'
+'018. List all the the persistent volumes sorted by capacity'
+'019. Find the pod which is consuming the most CPU'
+'022. Create a new ingress resource and expose the service on a path'
+'024. Upgrade the image in the deployment, check the history and roll back'
+'027. Create a pod that will only be scheduled on a node with a specific label'
+'028. Create a pod which uses a persistent volume for storage'
+'032. Apply autoscaling to the deployment'
+'043. Update the password in the existing configmap'
+'045. Create a network policy and allow traffic from a pod to two services'
+
+## einfach
+'001. Update the image of the deployment'
+'002. Change the static pod path'
+'003. Upgrade the cluster'
+'004. Create a deployment with replicas'
+'005. Create a pod with labels'
+'006. Create a pod in a namespace'
+'007. Create a pod and expose it'
+'009. Create a pod with a command'
+'010. Taint a node to be unschedulable'
+
+"013. List all the internal IP's of all the nodes in the cluster"
+
+'016. Create a service from the pod and run a DNS lookup to check the service'
+
+'020. Use JSON path to get all the node names'
+'021. Show the logs from the container'
+
+'023. Overwrite the label of the pod with a value'
+
+'025. Find out which pods are available with the label in the cluster'
+'026. Find out why a pod is failing and fix the issue'
+
+'029. Remove the taint added to the node'
+
+'031. Schedule a pod on the node by using tolerations'
+
+'033. Check how many nodes are in ready state'
+'034. Check how many nodes are in ready state'
+'035. Create a configmap and add it to the pod'
+'036. List all the events sorted by the timestamp'
+'038. Investigate the node and bring it back to ready state'
+'039. Make the node unavailable and reschedule all the pods on it'
+"040. Create a pod which echo's a sentence, exists and is deleted automatically"
+'041. Annotate an existing pod and use a value'
+'042. Get a list of all the pods in all the namespaces'
+
+'044. Troubleshoot a pod which is not scheduling on the node and fix the issue'
+'046. Create a pod and set SYS_TIME, and let it sleep for one hour'
+'047. Create a clusterrole and a clusterrolebinding'
+'048. Get the IP address of a pod'
+'049. Find out the version of the cluster'
+'051. Create a cronjob which prints the date and Running every minute'
+'053. Create a networkpolicy'
+'054. Create a pod with container port 80'
+'055. Monitor the logs of a pod'
+'056. Rollback a deployment to revision 1'
+'057. List a pod with custom columns'
+'058. For a pod, set the CPU memory requests and limits'
+'059. Create a pod with a non-persistent storage'
+'060. Troubleshoot a failed pod and make it running again'
+'061. Expose a pod internally and create a test-pod for look-up'
+'062. Create a DaemonSet'
+'063. Fix a non-schedulable node'
+'064. Get all the objects in all the namespaces'
+'065. Create a pod and assign it to the node'
+'066. Find all the pods with a specific label'
+'068. Create a pod and set tolerations'
+'069. Check the image version of a pod without using the describe command'
+'070. Create a pod with a sidecar container for logging'
+'071. Find out where the Kubernetes master and KubeDNS are running at'
+'072. Print the pod names and start times to a file'
+'073. Create a pod which runs a command and sleeps for 100 seconds'
+'074. Create a pod and specify a CPU request and a CPU limit'
+'075. Scale a deployment to 5 replicas'
+'076. List all the secrets and configmaps in the cluster in all namespaces'
+'077. Create a NetworkPolicy which denies all the ingress traffic'
+'078. Create an init container in a pod'
+'079. List the logs of the pod and search for the pattern start'
+'080. Expose the deployment'
+'081. Create two pods with different labels'
+'082. Create a clusterrole, service account and rolebinding'
+'083. Find the static pod path'
+'084. Delete a pod without any delay'
+'085. Grep the current context and write it to a file'
+'086. Get a list of all the pods which were recently deleted'
+'087. Troubleshoot the pod and fix the issue'
+'088. Create a pod with a storage which lasts as long as the lifetime of the pod'
+'089. Create a pod and add the runAsUser and fsGroup'
+'090. Troubleshoot and fix the kubeconfig file'
+'091. Create a pod and set NET_ADMIN'
+'092. Delete all the pods with a specific label'
+'093. Create a multipod with 3 containers'
+'094. Replace a pod with an existing yaml file and verify after'
+'095. Change the requested storage size of the PersistentVolumeClaim'
+'096. Edit an existing pod and add a command'
+'097. Add a readiness probe to an existing deployment'
+'098. Get all contexts and write it to a file'
+'099. Create a replicaset which has 3 replicas'
+'100. List all the control plane components and write them to a file'
+
+
+## eingebaut:
+'008. Upgrade a deployment by using rolling update'
+'011. Create a new service account, clusterrole and clusterrolebinding'
+'012. Create a NetworkPolicy that allows all pods in the namespace to use one port'
+'015. Create a new user and grant him access to the cluster'
+'030. Take a backup and restore ETCD'
+'037. Create a pod with a non-persistent volume'
+'050. Change the mountpath of a container in a statefulset'
+'052. Use JSONPATH and get a list of all the pods awith name and namespace'
+'067. Create a taint on the node'

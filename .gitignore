@@ -1,0 +1,14 @@
+# Ignore everything in this directory
+#*
+# Except this file
+#!.gitignore
+
+k3d
+kind
+kubectl
+.env
+*/.start.time
+kubeconfig.*
+kubeconfig
+*/task.txt
+cilium

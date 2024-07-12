@@ -1,0 +1,15 @@
+
+
+POD=my-busybox
+IMAGE=busybox:1.31.1
+SLEEP=4800
+NODE=worker
+export TASK=${PWD##*/}
+
+DEPLOYMENT1=d1
+DEPLOYMENT2=d2
+DEPLOYMENT3=d3
+
+PORT1=80
+PORT2=81
+PORT3=82

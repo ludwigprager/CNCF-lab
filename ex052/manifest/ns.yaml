@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+  name: ns001
+spec:
+
+---
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+  name: ns002
+spec:
+
+---
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+  name: ns003
+spec:
+

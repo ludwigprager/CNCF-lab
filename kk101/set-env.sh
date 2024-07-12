@@ -1,0 +1,2 @@
+
+export TASK=${PWD##*/}

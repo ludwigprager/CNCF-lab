@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+  name: production
+spec:
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: frontend
+  name: frontend
+  namespace: production
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+
+
+

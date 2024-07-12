@@ -1,0 +1,4 @@
+git clone git@git.g1:CKA-exercises.git
+
+git remote add g1 http://lyra.g1:3000/lprager/CKA-exercises.git
+
