@@ -1,0 +1,45 @@
+https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+
+
+# 1. update package list
+apt update
+
+# 2. install packages necessary for further apt steps
+apt-get install -y apt-transport-https ca-certificates curl gpg
+
+# 3. add the k8s list
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.26/deb/ /' | tee /etc/apt/sources.list.d/kubernetes.list
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.26/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+apt-get update
+
+apt-get install -y kubeadm='1.26.3-1.1' 
+
+
+#
+
+# list available versions
+apt list -a kubeadm
+
+---
+
+
+# master
+
+kubectl drain cka-$(whoami)-control-plane
+
+docker  exec -ti cka-$(whoami)-control-plane apt update -y
+docker  exec -ti cka-$(whoami)-control-plane apt list -a kubeadm | grep 1.27.0
+docker  exec -ti cka-$(whoami)-control-plane apt install -y kubeadm=1.27.0-2.1
+docker  exec -ti cka-$(whoami)-control-plane kubeadm upgrade apply v1.27.0
+
+# node
+
+kubectl drain cka-$(whoami)-worker --ignore-daemonsets
+
+docker  exec -ti cka-$(whoami)-worker apt update -y
+docker  exec -ti cka-$(whoami)-worker apt list -a kubelet | grep $VERSION
+docker  exec -ti cka-$(whoami)-worker apt install -y kubelet=1.27.0-2.1
+docker  exec -ti cka-$(whoami)-worker systemctl daemon-reload
+docker  exec -ti cka-$(whoami)-worker systemctl restart kubelet
+
+kubectl uncordon cka-$(whoami)-worker

@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: p1
+  namespace: ns001
+spec:
+  containers:
+  - image: redis
+    name: p
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: p2
+  namespace: ns002
+spec:
+  containers:
+  - image: redis
+    name: p
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: p3
+  namespace: ns003
+spec:
+  containers:
+  - image: redis
+    name: p
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
