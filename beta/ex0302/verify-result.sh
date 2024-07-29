@@ -11,7 +11,6 @@ source $BASEDIR/../functions.sh
 
 
 error=false
-message=
 
 error=true
 
@@ -19,7 +18,6 @@ if [ "$error" = true ] ; then
 
 cat << EOF
 FAILED
-$message
 
 - https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#restoring-an-etcd-cluster
 - read the path of the config.yaml specified in the kubelet's process '--config' parameter
@@ -53,15 +51,7 @@ sed -i 's|path: /var/lib/etcd|path: $DATA_DIR|' /etc/kubernetes/manifests/etcd.y
 EOF
 
 else
-#  source 
-#    start=$(<start.time)
-#    now=$(date +%s)
-#    elapsed=$( echo "$now - $start" | bc -l )
-#    minutes=$(( elapsed/60 ))
-#    seconds=$(( elapsed - (minutes * 60) ))
-    echo PASSED
-#    printf "Time taken: $minutes minutes, $seconds seconds\n"
-
+  echo PASSED
   print-elapsed-time $BASEDIR
 fi
 
