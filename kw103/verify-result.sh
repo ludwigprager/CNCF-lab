@@ -32,7 +32,7 @@ suggested solution:
 
 kubeadm  token create --print-join-command
 
-kubeadm join cka-$(whoami)-control-plane:6443 --token XXXXXXXXXXXXXXXXXXXXXXX --discovery-token-ca-cert-hash sha256:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX --ignore-preflight-errors=all
+kubeadm join cncf-$(whoami)-control-plane:6443 --token XXXXXXXXXXXXXXXXXXXXXXX --discovery-token-ca-cert-hash sha256:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX --ignore-preflight-errors=all
 
 
 EOF

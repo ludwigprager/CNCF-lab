@@ -26,19 +26,19 @@ kubectl create ns $TASK > /dev/null || true
 
 #export RELEASE=$(curl -s https://api.github.com/repos/etcd-io/etcd/releases/latest|grep tag_name | cut -d '"' -f 4)
 
-docker exec -ti cka-$(whoami)-control-plane \
+docker exec -ti cncf-$(whoami)-control-plane \
   curl -L -O https://github.com/etcd-io/etcd/releases/download/v3.5.14/etcd-v3.5.14-linux-amd64.tar.gz > /dev/null 2>&1
-#kubectl node-shell cka-$(whoami)-control-plane -- \
-docker exec -ti cka-$(whoami)-control-plane \
+#kubectl node-shell cncf-$(whoami)-control-plane -- \
+docker exec -ti cncf-$(whoami)-control-plane \
   tar zxvf etcd-v3.5.14-linux-amd64.tar.gz > /dev/null 2>&1
-#kubectl node-shell cka-$(whoami)-control-plane -- \
+#kubectl node-shell cncf-$(whoami)-control-plane -- \
 #  chmod +x etcd-v3.5.14-linux-amd64/\* > /dev/null 2>&1
-#kubectl node-shell cka-$(whoami)-control-plane -- \
-docker exec -ti cka-$(whoami)-control-plane \
+#kubectl node-shell cncf-$(whoami)-control-plane -- \
+docker exec -ti cncf-$(whoami)-control-plane \
   cp etcd-v3.5.14-linux-amd64/etcdctl /usr/local/bin > /dev/null 2>&1
 
-#kubectl node-shell cka-$(whoami)-control-plane -- \
-docker exec -ti cka-$(whoami)-control-plane \
+#kubectl node-shell cncf-$(whoami)-control-plane -- \
+docker exec -ti cncf-$(whoami)-control-plane \
   sh -c "ETCDCTL_API=3 etcdctl \
     --endpoints=https://127.0.0.1:2379 \
     --cacert=/etc/kubernetes/pki/etcd/ca.crt \

@@ -1,3 +1,3 @@
 
-CLUSTER="cka-$(whoami)"
+CLUSTER="cncf-$(whoami)"
 PS1="[CKA ${TASK:-undefined} ]\$ "

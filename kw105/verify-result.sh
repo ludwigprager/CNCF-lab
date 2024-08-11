@@ -33,7 +33,7 @@ $message
 
 suggested solution:
 
-kubectl drain cka-$(whoami)-worker --ignore-daemonsets
+kubectl drain cncf-$(whoami)-worker --ignore-daemonsets
 
 EOF
 

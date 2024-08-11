@@ -20,7 +20,7 @@ source ../.env
 # cordon all nodes except master
 nodes=$( kubectl get nodes -o jsonpath='{$.items[*].metadata.name}' )
 for node in $nodes; do
-  test $node != cka-$(whoami)-control-plane && kubectl cordon $node
+  test $node != cncf-$(whoami)-control-plane && kubectl cordon $node
 done
 
 echo "Preparing the environment ..."

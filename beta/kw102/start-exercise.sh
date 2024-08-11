@@ -29,7 +29,7 @@ for node in $nodes; do
 done
 
 # create the to-be-restored-backup mentioned in the task
-docker exec cka-$(whoami)-control-plane bash -c ' \
+docker exec cncf-$(whoami)-control-plane bash -c ' \
   ETCDCTL_API=3 etcdctl --endpoints=https://127.0.0.1:2379 \
   --cert=/etc/kubernetes/pki/etcd/server.crt \
   --key=/etc/kubernetes/pki/etcd/server.key \
@@ -46,7 +46,7 @@ Q2  Create a snapshot of ETCD and save it to /root/backup/etcd-backup-new.db. Re
 
 
 Hint: use the following command for a shell in control-plane and worker nodes:
-docker exec -ti cka-$(whoami)-control-plane bash
+docker exec -ti cncf-$(whoami)-control-plane bash
 
 You can review this task at any time in the file task.txt
 EOF

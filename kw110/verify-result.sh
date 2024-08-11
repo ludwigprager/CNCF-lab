@@ -11,14 +11,14 @@ source $CKA_BASEDIR/functions.sh
 
 error=false
 
-reply=$( kubectl auth can-i create secrets --as=system:serviceaccount:project-1:$SERVICEACCOUNT -n $NAMESPACE )
+reply=$( kubectl auth can-i create secrets --as=system:serviceaccount:${NAMESPACE}:$SERVICEACCOUNT -n $NAMESPACE )
 echo $reply
 if [[ "$reply" == "no" ]]; then
   echo $SERVICEACCOUNT can\'t create secrets
   error=true
 fi
 
-reply=$( kubectl auth can-i create configmaps --as=system:serviceaccount:project-1:$SERVICEACCOUNT -n $NAMESPACE )
+reply=$( kubectl auth can-i create configmaps --as=system:serviceaccount:${NAMESPACE}:$SERVICEACCOUNT -n $NAMESPACE )
 if [[ "$reply" == "no" ]]; then
   echo $SERVICEACCOUNT can\'t create configmaps
   error=true
@@ -34,7 +34,7 @@ cat << EOF
 
 kubectl create sa $SERVICEACCOUNT -n $NAMESPACE
 #kubectl create role $ROLE -n $NAMESPACE --verb=create --resource=secrets,configmaps
-#kubectl create rolebinding $ROLEBINDING -n $NAMESPACE --role=$ROLE --serviceaccount=project-1:$SERVICEACCOUNT
+#kubectl create rolebinding $ROLEBINDING -n $NAMESPACE --role=$ROLE --serviceaccount=${NAMESPACE}:$SERVICEACCOUNT
 
 cat << EOT | kubectl apply -f -
 
@@ -61,7 +61,7 @@ metadata:
   namespace: $NAMESPACE
 subjects:
 - kind: ServiceAccount
-  name: gitops
+  name: $SERVICEACCOUNT
   namespace: $NAMESPACE
 roleRef:
   kind: Role

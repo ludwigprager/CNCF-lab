@@ -38,10 +38,10 @@ cat << EOF > task.txt
 Q1 Given a cluster running version 1.26.0, upgrade the master node and worker node to version $VERSION. Be sure to drain the master and worker node before upgrading it and uncordon it after the upgrade.
 
 Hint: use the following command for a shell in control-plane and worker nodes:
-docker exec -ti cka-$(whoami)-control-plane bash
-docker exec -ti cka-$(whoami)-worker        bash
-docker exec -ti cka-$(whoami)-worker1       bash
-docker exec -ti cka-$(whoami)-worker2       bash
+docker exec -ti cncf-$(whoami)-control-plane bash
+docker exec -ti cncf-$(whoami)-worker        bash
+docker exec -ti cncf-$(whoami)-worker1       bash
+docker exec -ti cncf-$(whoami)-worker2       bash
 
 You can review these text at any time in the file task.txt
 

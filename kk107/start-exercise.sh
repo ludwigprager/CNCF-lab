@@ -24,7 +24,7 @@ Q106: Create a static pod named static-busybox on the master that uses the busyb
 POD: ${POD}
 Image: ${IMAGE}
 
-hint: use 'docker exec -ti cka-$(whoami)-control-plane bash' to log on to the master node
+hint: use 'docker exec -ti cncf-$(whoami)-control-plane bash' to log on to the master node
 
 EOF
 clear

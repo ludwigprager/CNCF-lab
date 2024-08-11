@@ -49,7 +49,7 @@ kubectl create -n $NAMESPACE rolebinding developer-binding-$USER --role=develope
 
 # Add to kubeconfig and test
 kubectl config set-credentials $USER --client-key=$USER.key --client-certificate=$USER.crt --embed-certs=true
-kubectl config set-context $USER --cluster=kind-cka-$(whoami) --user=$USER
+kubectl config set-context $USER --cluster=kind-cncf-$(whoami) --user=$USER
 kubectl config use-context $USER
 
 kubectl get po -n $NAMESPACE
@@ -73,11 +73,11 @@ error=false
 export KUBECONFIG=$BASEDIR/kubeconfig.$TASK
 cp .kubeconfig-for-verification $KUBECONFIG
 
-kubectl config delete-user kind-cka-$(whoami)
-kubectl config delete-context kind-cka-$(whoami)
+kubectl config delete-user kind-cncf-$(whoami)
+kubectl config delete-context kind-cncf-$(whoami)
 
 kubectl config set-credentials $USER --client-key=$USER.key --client-certificate=$USER.crt --embed-certs=true
-kubectl config set-context $USER --cluster=kind-cka-$(whoami) --user=$USER
+kubectl config set-context $USER --cluster=kind-cncf-$(whoami) --user=$USER
 kubectl config use-context $USER
 
 #kubectl get pod

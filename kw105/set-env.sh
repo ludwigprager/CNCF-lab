@@ -2,5 +2,5 @@
 export TASK=${PWD##*/}
 
 DEPLOYMENT=d1
-NODE=cka-$(whoami)-worker
+NODE=cncf-$(whoami)-worker
 IMAGE=nginx

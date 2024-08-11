@@ -38,6 +38,11 @@ echo "KUBECONFIG=$CKA_BASEDIR/kubeconfig" >> .env
 
 source .env
 
+#source <( kubectl completion bash | sed 's/kubectl/k/g' )
+#test -f /etc/bash_completion && source /etc/bash_completion
+kubectl completion bash | sed 's/kubectl/k/g' >> .env
+test -f /etc/bash_completion && cat /etc/bash_completion >> .env
+
 if ! kind-cluster-exists $CLUSTER; then
   echo "wait for cluster to get ready ..."
 

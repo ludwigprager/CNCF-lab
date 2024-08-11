@@ -38,26 +38,26 @@ cat << EOF
 
 # master
 
-kubectl drain cka-$(whoami)-control-plane --ignore-daemonsets
+kubectl drain cncf-$(whoami)-control-plane --ignore-daemonsets
 
-docker  exec -ti cka-$(whoami)-control-plane apt update -y
-docker  exec -ti cka-$(whoami)-control-plane apt list -a kubeadm | grep $VERSION
-docker  exec -ti cka-$(whoami)-control-plane apt install -y kubeadm=1.27.16-1.1
-docker  exec -ti cka-$(whoami)-control-plane kubeadm upgrade apply v$VERSION
-docker  exec -ti cka-$(whoami)-control-plane systemctl restart kubelet
+docker  exec -ti cncf-$(whoami)-control-plane apt update -y
+docker  exec -ti cncf-$(whoami)-control-plane apt list -a kubeadm | grep $VERSION
+docker  exec -ti cncf-$(whoami)-control-plane apt install -y kubeadm=1.27.16-1.1
+docker  exec -ti cncf-$(whoami)-control-plane kubeadm upgrade apply v$VERSION
+docker  exec -ti cncf-$(whoami)-control-plane systemctl restart kubelet
 
 
 # node
 
-kubectl drain cka-$(whoami)-worker --ignore-daemonsets
+kubectl drain cncf-$(whoami)-worker --ignore-daemonsets
 
-docker  exec -ti cka-$(whoami)-worker apt update -y
-docker  exec -ti cka-$(whoami)-worker apt list -a kubelet | grep $VERSION
-docker  exec -ti cka-$(whoami)-worker apt install -y kubelet=1.27.16-1.1
-docker  exec -ti cka-$(whoami)-worker systemctl daemon-reload
-docker  exec -ti cka-$(whoami)-worker systemctl restart kubelet
+docker  exec -ti cncf-$(whoami)-worker apt update -y
+docker  exec -ti cncf-$(whoami)-worker apt list -a kubelet | grep $VERSION
+docker  exec -ti cncf-$(whoami)-worker apt install -y kubelet=1.27.16-1.1
+docker  exec -ti cncf-$(whoami)-worker systemctl daemon-reload
+docker  exec -ti cncf-$(whoami)-worker systemctl restart kubelet
 
-kubectl uncordon cka-$(whoami)-worker
+kubectl uncordon cncf-$(whoami)-worker
 
 #
 

@@ -21,7 +21,7 @@ echo $KEY
 
 cat << EOF > task.txt
 
-Q067 Create a taint on the node cka-$(whoami)-worker with the key 'spray' value of 'red' and effect of 'NoSchedule'
+Q067 Create a taint on the node cncf-$(whoami)-worker with the key 'spray' value of 'red' and effect of 'NoSchedule'
 
 EOF
 clear

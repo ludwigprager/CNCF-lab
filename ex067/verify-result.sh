@@ -14,15 +14,15 @@ error=false
 message=
 
 # test tain exists
-taint=$(kubectl get nodes cka-$(whoami)-worker  -o jsonpath="{.spec.taints[?(.key==\"$KEY\")]}")
+taint=$(kubectl get nodes cncf-$(whoami)-worker  -o jsonpath="{.spec.taints[?(.key==\"$KEY\")]}")
 if [[ -z $taint ]]; then
   error=true
   echo "the taint was not found"
 fi
 
 # test container image
-value=$(kubectl get nodes cka-$(whoami)-worker  -o jsonpath="{.spec.taints[?(.key==\"$KEY\")].value}")
-effect=$(kubectl get nodes cka-$(whoami)-worker  -o jsonpath="{.spec.taints[?(.key==\"$KEY\")].effect}")
+value=$(kubectl get nodes cncf-$(whoami)-worker  -o jsonpath="{.spec.taints[?(.key==\"$KEY\")].value}")
+effect=$(kubectl get nodes cncf-$(whoami)-worker  -o jsonpath="{.spec.taints[?(.key==\"$KEY\")].effect}")
 
 if [[ $value != $VALUE ]]; then
   error=true
@@ -42,7 +42,7 @@ $message
 
 suggested solution:
 
-kubectl taint node cka-$(whoami)-worker $KEY=$VALUE:NoSchedule
+kubectl taint node cncf-$(whoami)-worker $KEY=$VALUE:NoSchedule
 
 EOF
 

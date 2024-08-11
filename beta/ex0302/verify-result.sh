@@ -29,7 +29,7 @@ FAILED
 suggested solution:
 
 # first, log on to the master:
-docker exec -ti cka-$(whoami)-control-plane bash
+docker exec -ti cncf-$(whoami)-control-plane bash
 
 ps x | grep /usr/bin/kubelet | grep -o -- --config=[a-z,/]*
 grep staticPodPath: /var/lib/kubelet/config.yaml

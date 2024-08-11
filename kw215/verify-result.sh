@@ -32,7 +32,7 @@ kind: Pod
 metadata:
   name: web-pod
 spec:
-  nodeName: cka-$(whoami)-worker2
+  nodeName: cncf-$(whoami)-worker2
   containers:
   - image: nginx
     name: web

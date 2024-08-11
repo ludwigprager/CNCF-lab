@@ -37,7 +37,7 @@ clear
 
 cat << EOF > task.txt
 
-Q5 Mark the worker node cka-$(whoami)-worker as unschedulable and reschedule all the pods running on it.
+Q5 Mark the worker node cncf-$(whoami)-worker as unschedulable and reschedule all the pods running on it.
 
 You can review this task at any time in the file task.txt
 EOF

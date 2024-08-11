@@ -18,7 +18,7 @@ source ../.env
 echo "Preparing the environment ..."
 cat << EOF > task.txt
 
-Q010: Taint node cka-$(whoami)-worker to be unscheduable and test it by creating a pod
+Q010: Taint node cncf-$(whoami)-worker to be unscheduable and test it by creating a pod
 
 - Taint:
 key: $KEY

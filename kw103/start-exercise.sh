@@ -26,7 +26,7 @@ cat << EOF > task.txt
 Q3  Join $NODE worker node to the cluster and you hav to deploy a pod in the $NODE, pod name should be $POD and image should be $IMAGE
 
 Hint: use the following command for a shell in control-plane and worker nodes:
-docker exec -ti cka-$(whoami)-control-plane bash
+docker exec -ti cncf-$(whoami)-control-plane bash
 
 You can review this task at any time in the file task.txt
 EOF

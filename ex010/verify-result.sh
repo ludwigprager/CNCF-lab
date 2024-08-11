@@ -14,14 +14,14 @@ error=false
 message=
 
 # test tain exists
-taint=$(kubectl get nodes cka-$(whoami)-worker  -o jsonpath="{.spec.taints[?(.key==\"spray\")]}")
+taint=$(kubectl get nodes cncf-$(whoami)-worker  -o jsonpath="{.spec.taints[?(.key==\"spray\")]}")
 if [[ -z $taint ]]; then
   error=true
   echo "the taint was not found"
 fi
 
 # test container image
-effect=$(kubectl get nodes cka-$(whoami)-worker  -o jsonpath="{.spec.taints[?(.key==\"spray\")].effect}")
+effect=$(kubectl get nodes cncf-$(whoami)-worker  -o jsonpath="{.spec.taints[?(.key==\"spray\")].effect}")
 
 if [[ $effect != 'NoSchedule' ]]; then
   error=true
@@ -29,15 +29,15 @@ if [[ $effect != 'NoSchedule' ]]; then
 fi
 
 node=$( kubectl get pod ${POD1} -o jsonpath="{.spec.nodeName}" )
-if [[ $node == cka-$(whoami)-worker ]]; then
+if [[ $node == cncf-$(whoami)-worker ]]; then
   error=true
-  echo "$POD1 should not run on cka-$(whoami)-worker"
+  echo "$POD1 should not run on cncf-$(whoami)-worker"
 fi
 
 node=$( kubectl get pod ${POD2} -o jsonpath="{.spec.nodeName}" )
-if [[ $node != cka-$(whoami)-worker ]]; then
+if [[ $node != cncf-$(whoami)-worker ]]; then
   error=true
-  echo "$POD1 should run on cka-$(whoami)-worker"
+  echo "$POD1 should run on cncf-$(whoami)-worker"
 fi
 
 
@@ -49,7 +49,7 @@ $message
 
 # suggested solution:
 
-kubectl taint node cka-$(whoami)-worker $KEY=$VALUE:NoSchedule
+kubectl taint node cncf-$(whoami)-worker $KEY=$VALUE:NoSchedule
 
 kubectl run $POD1 --image=redis:alpine
 

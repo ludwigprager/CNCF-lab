@@ -22,18 +22,18 @@ kubectl create ns $TASK > /dev/null || true
 
 #export RELEASE=$(curl -s https://api.github.com/repos/etcd-io/etcd/releases/latest|grep tag_name | cut -d '"' -f 4)
 
-#kubectl node-shell cka-$(whoami)-control-plane -- \
+#kubectl node-shell cncf-$(whoami)-control-plane -- \
 #  curl -L -O https://github.com/etcd-io/etcd/releases/download/v3.5.14/etcd-v3.5.14-linux-amd64.tar.gz > /dev/null 2>&1
-docker exec cka-$(whoami)-control-plane bash -c \
+docker exec cncf-$(whoami)-control-plane bash -c \
   'curl -L -O https://github.com/etcd-io/etcd/releases/download/v3.5.14/etcd-v3.5.14-linux-amd64.tar.gz > /dev/null 2>&1'
 
-#kubectl node-shell cka-$(whoami)-control-plane -- \
+#kubectl node-shell cncf-$(whoami)-control-plane -- \
 #  tar zxvf etcd-v3.5.14-linux-amd64.tar.gz > /dev/null 2>&1
-docker exec cka-$(whoami)-control-plane bash -c \
+docker exec cncf-$(whoami)-control-plane bash -c \
   'tar zxvf etcd-v3.5.14-linux-amd64.tar.gz > /dev/null 2>&1'
-#kubectl node-shell cka-$(whoami)-control-plane -- \
+#kubectl node-shell cncf-$(whoami)-control-plane -- \
 #  cp etcd-v3.5.14-linux-amd64/etcdctl /usr/local/bin > /dev/null 2>&1
-docker exec cka-$(whoami)-control-plane bash -c \
+docker exec cncf-$(whoami)-control-plane bash -c \
   'cp etcd-v3.5.14-linux-amd64/etcdctl /usr/local/bin > /dev/null 2>&1'
 
 cat << EOF > task.txt

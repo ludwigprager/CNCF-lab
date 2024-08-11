@@ -123,6 +123,16 @@ ns() {
     - cm5 Q5: Create a configMap 'anotherone' with values 'var6=val6', 'var7=val7'. Load this configMap as env variables into a new nginx pod
     - cm6 Q6: Create a configMap 'cmvolume' with values 'var8=val8', 'var9=val9'. Load this as a volume inside an nginx pod on path '/etc/lala'. Create the pod and 'ls' into the '/etc/lala' directory.
 
+- killershell CKA
+    - ks204 Q: Use namespace $NAMESPACE for the following task. Create a single pod $POD1 with image $IMAGE1. Configure a livenessprobe which simply runs 'true'. Also, configure a readinessprobe wich checks if the URL 'http://$SERVICE:$PORT' is reachable. Use command 'wget -T2 -O- http://$SERVICE:$PORT'. 
+    - ks212 Q: Use namespace $ NAMESPACE. Create a deployment $DEPLOYMENT with label $KEY=$VALUE and $REPLICAS replicas and image $IMAGE.
+    - ks224 Q: start-exercise.sh:Q24 Create a NetworkPolicy called '$POLICY' in namespace '$NAMESPACE'. It should allow the ${TIER3}- pods only to
+
+- killershell CKS
+    - ks318 Q: Namespace $NAMESPACE contains five secrets of type opaque which can be considered highly confidential. The latest incident-prevention-investigation revealed that service account $SERVICEACCOUNT had too broad access to the cluster for some time. This SA should have never had access to any secret in that namespace.
+
+
+
 
 ## By Topic
 ### Cluster Upgrade

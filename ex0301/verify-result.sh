@@ -12,12 +12,12 @@ source $CKA_BASEDIR/functions.sh
 
 error=false
 
-docker exec cka-$(whoami)-control-plane bash -c \
+docker exec cncf-$(whoami)-control-plane bash -c \
   'rm -Rf /tmp/datadir/'
-docker exec cka-$(whoami)-control-plane bash -c \
+docker exec cncf-$(whoami)-control-plane bash -c \
   'mkdir -p /tmp/datadir/'
 
-docker exec cka-$(whoami)-control-plane bash -c \
+docker exec cncf-$(whoami)-control-plane bash -c \
   'etcdctl snapshot restore --data-dir /tmp/datadir /tmp/snapshot.db > /dev/null 2>&1'
 
 if [ $? -ne 0 ]; then
@@ -41,7 +41,7 @@ FAILED
 
 suggested solution:
 
-kubectl node-shell cka-$(whoami)-control-plane
+kubectl node-shell cncf-$(whoami)-control-plane
 ps x | grep /usr/bin/kubelet | grep -o -- --config=[a-z,/]*
 grep staticPodPath: /var/lib/kubelet/config.yaml
 sed -n 's/.*--trusted-ca-file=\(.*\)$/\1/p' /etc/kubernetes/manifests/etcd.yaml

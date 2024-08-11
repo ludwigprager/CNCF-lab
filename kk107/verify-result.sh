@@ -10,7 +10,7 @@ source $CKA_BASEDIR/functions.sh
 error=false
 
 # test pod exists
-deployment=$(kubectl get pod ${POD-cka-$(whoami)-control-plane} -o jsonpath='{.metadata.name}')
+deployment=$(kubectl get pod ${POD-cncf-$(whoami)-control-plane} -o jsonpath='{.metadata.name}')
 if [[ $deployment != ${POD} ]]; then
   error=true
   echo "pod ${POD} not found"

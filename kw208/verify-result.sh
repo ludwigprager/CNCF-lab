@@ -14,7 +14,7 @@ error=false
 
 #node=$( kubectl get pod ${POD} -o jsonpath="{.spec.nodeName}" )
 #
-#if [[ "$node" != "cka-$(whoami)-control-plane" ]]; then
+#if [[ "$node" != "cncf-$(whoami)-control-plane" ]]; then
 #  error=true
 #  echo "pod doesn't run on controlplane"
 #fi
