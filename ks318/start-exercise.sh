@@ -24,26 +24,27 @@ source $CKA_BASEDIR/.env
 echo "Preparing the environment ..."
 kubectl wait --for=condition=Ready node cncf-$(whoami)-control-plane
 
-test  $NAMESPACE != "default"  && kubectl create namespace $NAMESPACE
-kubectl create secret generic $SECRET1 -n $NAMESPACE --from-literal=a=b
-kubectl create secret generic $SECRET2 -n $NAMESPACE --from-literal=a=b
-kubectl create serviceaccount $SERVICE_ACCOUNT_NAME -n $NAMESPACE
+test  $NAMESPACE_1 != "default"  && kubectl create namespace $NAMESPACE_1
+test  $NAMESPACE_2 != "default"  && kubectl create namespace $NAMESPACE_2
 
+for secret in $SECRET1 $SECRET2 $SECRET3 $SECRET4 $SECRET5 $SECRET6; do
+  password=$( echo "${RANDOM}${RANDOM}${RANDOM}" | tr '[0-9]' '[a-z]' )
+  kubectl create secret generic $secret -n $NAMESPACE_2 --from-literal=password=$password
+done
 
-#envsubst < pod.yaml.tpl | kubectl apply -f -
-
+kubectl create serviceaccount $SERVICEACCOUNT -n $NAMESPACE_1
 
 envsubst < role.yaml.tpl | kubectl apply -f -
 
 
-kubectl create token $SERVICE_ACCOUNT_NAME -n $NAMESPACE -o jsonpath='{.status.token}' > token
+kubectl create token $SERVICEACCOUNT -n $NAMESPACE_1 -o jsonpath='{.status.token}' > token
 #cat token | jwt -show -
 
 TOKEN=$( cat token )
 SERVER=$( kubectl config view --raw -o json | jq -r '.clusters[0].cluster.server' )
-echo curl -k -H "Authorization: Bearer $TOKEN"   ${SERVER}/api/v1/
-echo curl -k -H "Authorization: Bearer $TOKEN"   ${SERVER}/api/v1/namespaces/$NAMESPACE/pods
-echo kubectl auth can-i get pods --as=system:serviceaccount:$NAMESPACE:$SERVICE_ACCOUNT_NAME -n $NAMESPACE 
+
+curl -k -H "Authorization: Bearer $TOKEN"   ${SERVER}/api/v1/namespaces/$NAMESPACE_2/secrets/$SECRET1 > result.json
+echo kubectl auth can-i get secrets --as=system:serviceaccount:$NAMESPACE_1:$SERVICEACCOUNT -n $NAMESPACE_2 
 
 
 log=$( docker exec -ti cncf-$(whoami)-control-plane bash -c 'find /var/log/pods/kube-system_kube-apiserver* -name \*.log' | sed 's/\r//' )
@@ -53,9 +54,9 @@ docker cp cncf-$(whoami)-control-plane:/var/log/kubernetes/kube-apiserver-audit.
 
 cat << EOF > task.txt
 
-Q Namespace $NAMESPACE contains five secrets of type opaque which can be considered highly confidential. The latest incident-prevention-investigation revealed that service account $SERVICE_ACCOUNT_NAME had too broad access to the cluster for some time. This SA should have never had access to any secret in that namespace.
+Q Namespace $NAMESPACE_2 contains five secrets of type opaque which can be considered highly confidential. The latest incident-prevention-investigation revealed that service account $SERVICEACCOUNT in namespace $NAMESPACE_1 had too broad access to the cluster for some time. This SA should have never had access to any secret in that namespace.
 
-Find out which secrets in namespace $NAMESPACE this SA did access by looking at the audit logs under $LOGPATH.
+Find out which secrets in namespace $NAMESPACE_2 this SA did access by looking at the audit logs under $LOGPATH.
 
 Change the password to any new string of only those secrets that were accessed by this SA.
 
